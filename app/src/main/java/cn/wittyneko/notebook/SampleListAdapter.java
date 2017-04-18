@@ -53,14 +53,14 @@ public class SampleListAdapter extends DataWrapperAdapter {
                         binding.titleTv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
                         break;
                 }
-                DataVo dataVo = (DataVo) item.getData();
+                DataVO dataVO = (DataVO) item.getData();
                 //StringBuilder str = new StringBuilder();
                 //if (item.getChildList()!= null && !item.getChildList().isEmpty())
                 //    str.append(item.getLevel()).append("级，列表 ");
                 //else
                 //    str.append(item.getLevel()).append("级，条目 ");
-                //str.append(dataVo.getTitle());
-                binding.titleTv.setText(dataVo.getTitle());
+                //str.append(dataVO.getTitle());
+                binding.titleTv.setText(dataVO.getTitle());
             }
         };
     }

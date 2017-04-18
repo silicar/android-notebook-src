@@ -25,7 +25,7 @@ public abstract class DataWrapperAdapter extends ModelCommonAdapter<DataWrapper>
      * @return
      */
     public boolean changeExpand(int position) {
-        DataWrapper<DataVo> vo = list.get(position);
+        DataWrapper<DataVO> vo = list.get(position);
         //Log.e("Expand", "->" + vo.isExpand());
         //Log.e("HasChild", "->" + vo.isHasChild());
         if (vo.isHasChild()) {
@@ -43,27 +43,27 @@ public abstract class DataWrapperAdapter extends ModelCommonAdapter<DataWrapper>
     /**
      * 添加(展开)列表
      *
-     * @param dataVoList 列表
+     * @param dataVOList 列表
      * @param level      等级
      * @param parentPosition   上一级位置
      */
-    public void addList(List<DataVo> dataVoList, int level, int parentPosition) {
+    public void addList(List<DataVO> dataVOList, int level, int parentPosition) {
 
         List<DataWrapper> dataWrapperList = new ArrayList<>();
-        for (int i = 0; i < dataVoList.size(); i++) {
-            DataVo vo = dataVoList.get(i);
-            DataWrapper<DataVo> dataWrapper = new DataWrapper<>(false, false, level, parentPosition, i, vo);
-            if (vo.getDataVoList() != null && !vo.getDataVoList().isEmpty()) {
+        for (int i = 0; i < dataVOList.size(); i++) {
+            DataVO vo = dataVOList.get(i);
+            DataWrapper<DataVO> dataWrapper = new DataWrapper<>(false, false, level, parentPosition, i, vo);
+            if (vo.getDataVOList() != null && !vo.getDataVOList().isEmpty()) {
                 dataWrapper.setHasChild(true);
-                dataWrapper.setChildList(vo.getDataVoList());
-                //addList(vo.getDataVoList(), level + 1, i);
+                dataWrapper.setChildList(vo.getDataVOList());
+                //addList(vo.getDataVOList(), level + 1, i);
             }
             dataWrapperList.add(dataWrapper);
         }
         if (level == 1) {
             list.addAll(dataWrapperList);
         } else {
-            DataWrapper<DataVo> vo;
+            DataWrapper<DataVO> vo;
             for (int i = 0; i < list.size(); i++) {
                 vo = list.get(i);
                 if (vo.getLevel() == level - 1 && vo.getPosition() == parentPosition) {
@@ -94,7 +94,7 @@ public abstract class DataWrapperAdapter extends ModelCommonAdapter<DataWrapper>
      * @param oldPosition 上一级位置
      */
     private void removeList(Iterator<DataWrapper> iterator, int level, int parentPosition, int oldPosition) {
-        DataWrapper<DataVo> vo;
+        DataWrapper<DataVO> vo;
         while (iterator.hasNext()) {
             vo = iterator.next();
             //Log.e("level", "->" + vo.getLevel());
@@ -118,14 +118,14 @@ public abstract class DataWrapperAdapter extends ModelCommonAdapter<DataWrapper>
     }
 
     //展开全部
-    public void expandAll(List<DataVo> dataVoList, int level, int parentPosition) {
+    public void expandAll(List<DataVO> dataVOList, int level, int parentPosition) {
         removeList(level, parentPosition);
         List<DataWrapper> dataWrapperList = new ArrayList<>();
-        addExpandAll(dataVoList, dataWrapperList, level, parentPosition);
+        addExpandAll(dataVOList, dataWrapperList, level, parentPosition);
         if (level == 1) {
             list.addAll(dataWrapperList);
         } else {
-            DataWrapper<DataVo> vo;
+            DataWrapper<DataVO> vo;
             for (int i = 0; i < list.size(); i++) {
                 vo = list.get(i);
                 if (vo.getLevel() == level - 1 && vo.getPosition() == parentPosition) {
@@ -136,14 +136,14 @@ public abstract class DataWrapperAdapter extends ModelCommonAdapter<DataWrapper>
         }
     }
 
-    private void addExpandAll(List<DataVo> dataVoList, List<DataWrapper> dataWrapperList, int level, int parentPosition){
-        for (int i = 0; i < dataVoList.size(); i++) {
-            DataVo vo = dataVoList.get(i);
-            DataWrapper<DataVo> dataWrapper = new DataWrapper<>(false, false, level, parentPosition, i, vo);
-            if (vo.getDataVoList() != null && !vo.getDataVoList().isEmpty()) {
+    private void addExpandAll(List<DataVO> dataVOList, List<DataWrapper> dataWrapperList, int level, int parentPosition){
+        for (int i = 0; i < dataVOList.size(); i++) {
+            DataVO vo = dataVOList.get(i);
+            DataWrapper<DataVO> dataWrapper = new DataWrapper<>(false, false, level, parentPosition, i, vo);
+            if (vo.getDataVOList() != null && !vo.getDataVOList().isEmpty()) {
                 dataWrapper.setHasChild(true);
-                dataWrapper.setChildList(vo.getDataVoList());
-                addExpandAll(vo.getDataVoList(), dataWrapperList, level + 1, i);
+                dataWrapper.setChildList(vo.getDataVOList());
+                addExpandAll(vo.getDataVOList(), dataWrapperList, level + 1, i);
             }
             dataWrapperList.add(dataWrapper);
         }
@@ -152,7 +152,7 @@ public abstract class DataWrapperAdapter extends ModelCommonAdapter<DataWrapper>
     //折叠全部
     public void foldAll(int level, int parentPosition) {
         Iterator<DataWrapper> iterator = list.iterator();
-        DataWrapper<DataVo> vo;
+        DataWrapper<DataVO> vo;
         while (iterator.hasNext()) {
             vo = iterator.next();
             if (vo.getLevel() == level && vo.getParentPosition() == parentPosition) {

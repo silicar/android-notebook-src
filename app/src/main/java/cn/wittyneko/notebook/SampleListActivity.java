@@ -16,7 +16,7 @@ public class SampleListActivity extends AppCompatActivity {
 
     ActivitySampleListBinding binding;
     SampleListAdapter sampleListAdapter;
-    List<DataVo> dataVoList;
+    List<DataVO> dataVOList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class SampleListActivity extends AppCompatActivity {
      * 初始化例子列表
      */
     private void initData() {
-        dataVoList = new ArrayList<>();
+        dataVOList = new ArrayList<>();
         //特殊控件
         special();
         //网络
@@ -43,23 +43,23 @@ public class SampleListActivity extends AppCompatActivity {
     }
 
     private void special() {
-        List<DataVo> voList = new ArrayList<>();
-        dataVoList.add(new DataVo("特殊控件", voList));
+        List<DataVO> voList = new ArrayList<>();
+        dataVOList.add(new DataVO("特殊控件", voList));
     }
 
     private void network() {
-        List<DataVo> voList = new ArrayList<>();
-        dataVoList.add(new DataVo("网络请求", voList));
+        List<DataVO> voList = new ArrayList<>();
+        dataVOList.add(new DataVO("网络请求", voList));
     }
 
     private void material() {
-        List<DataVo> voList = new ArrayList<>();
-        dataVoList.add(new DataVo("Material Design", voList));
+        List<DataVO> voList = new ArrayList<>();
+        dataVOList.add(new DataVO("Material Design", voList));
     }
 
     private void test() {
-        List<DataVo> voList = new ArrayList<>();
-        dataVoList.add(new DataVo("测试", voList));
+        List<DataVO> voList = new ArrayList<>();
+        dataVOList.add(new DataVO("测试", voList));
     }
 
     /**
@@ -67,7 +67,7 @@ public class SampleListActivity extends AppCompatActivity {
      */
     private void initSampleList() {
         sampleListAdapter = new SampleListAdapter(this);
-        sampleListAdapter.addList(dataVoList, 1, 0);
+        sampleListAdapter.addList(dataVOList, 1, 0);
         binding.listView.setAdapter(sampleListAdapter.adapter);
     }
 
@@ -75,7 +75,7 @@ public class SampleListActivity extends AppCompatActivity {
         sampleListAdapter.setOnItemClickListener(new AdapterListener.OnItemClickListener() {
             @Override
             public boolean onItemClick(View view, int position) {
-                DataWrapper<DataVo> vo = sampleListAdapter.list.get(position);
+                DataWrapper<DataVO> vo = sampleListAdapter.list.get(position);
                 //Log.e("Expand", "-" + vo.isExpand());
                 //Log.e("HasChild", "-" + vo.isHasChild());
                 if (vo.isHasChild()) {

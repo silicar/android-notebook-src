@@ -7,28 +7,28 @@ import java.util.List;
 /**
  * Created by Brady on 2016/7/9.
  */
-public class DataVo {
+public class DataVO {
     String title;
     Intent intent;
-    List<DataVo> dataVoList;
+    List<DataVO> dataVOList;
 
-    public DataVo() {
+    public DataVO() {
     }
 
-    public DataVo(String title, List<DataVo> dataVoList) {
+    public DataVO(String title, List<DataVO> dataVOList) {
         this.title = title;
-        this.dataVoList = dataVoList;
+        this.dataVOList = dataVOList;
     }
 
-    public DataVo(String title, Intent intent) {
-        this.title = title;
-        this.intent = intent;
-    }
-
-    public DataVo(String title, Intent intent, List<DataVo> dataVoList) {
+    public DataVO(String title, Intent intent) {
         this.title = title;
         this.intent = intent;
-        this.dataVoList = dataVoList;
+    }
+
+    public DataVO(String title, Intent intent, List<DataVO> dataVOList) {
+        this.title = title;
+        this.intent = intent;
+        this.dataVOList = dataVOList;
     }
 
     public String getTitle() {
@@ -47,11 +47,11 @@ public class DataVo {
         this.intent = intent;
     }
 
-    public List<DataVo> getDataVoList() {
-        return dataVoList;
+    public List<DataVO> getDataVOList() {
+        return dataVOList;
     }
 
-    public void setDataVoList(List<DataVo> dataVoList) {
-        this.dataVoList = dataVoList;
+    public void setDataVOList(List<DataVO> dataVOList) {
+        this.dataVOList = dataVOList;
     }
 }
