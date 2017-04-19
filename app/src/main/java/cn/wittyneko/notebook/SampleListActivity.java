@@ -11,6 +11,7 @@ import java.util.List;
 
 import cn.wittyneko.adapter.AdapterListener;
 import cn.wittyneko.notebook.databinding.ActivitySampleListBinding;
+import cn.wittyneko.notebook.view.cumstor.NestedScrollActivity;
 
 public class SampleListActivity extends AppCompatActivity {
 
@@ -45,6 +46,7 @@ public class SampleListActivity extends AppCompatActivity {
     private void special() {
         List<DataVO> voList = new ArrayList<>();
         dataVOList.add(new DataVO("特殊控件", voList));
+        dataVOList.add(new DataVO("RecycleView", new Intent(this, NestedScrollActivity.class)));
     }
 
     private void network() {
