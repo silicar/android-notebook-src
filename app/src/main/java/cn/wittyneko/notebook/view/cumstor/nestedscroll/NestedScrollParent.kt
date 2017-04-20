@@ -61,6 +61,7 @@ class NestedScrollParent : LinearLayout, NestedScrollingParent {
     }
 
     override fun onNestedFling(target: View, velocityX: Float, velocityY: Float, consumed: Boolean): Boolean {
+        LogUtil.e("target: ${target.javaClass.simpleName}, velocityX: $velocityX , velocityY: $velocityY , consumed $consumed")
         return false
     }
 
